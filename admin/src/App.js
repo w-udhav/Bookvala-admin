@@ -20,6 +20,7 @@ function App() {
 
         <div>
           <Routes>
+            {/* <Route path='/' element={<Login />} /> */}
             <Route path='/' element={<Uploaded />} />
             <Route path='/approved' element={<Approved />} />
             <Route path='/confirmed' element={<Confirmed />} />

@@ -1,36 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const DataCat = () => {
+const DataCat = (props) => {
+    const style = 'underline underline-offset-8 decoration-cus-yellow font-bold text-2xl';
+
     return (
         <div className='my-7'>
             <nav className='flex flex-col mt-8 mb-4 border-zinc-400 box-border border-b pb-3'>
-                <div className='lg:w-[70%]  flex flex-row justify-around font-semibold text-xl'>
-                    <div className='underline underline-offset-8 decoration-cus-yellow'>
+                <div className='lg:w-[70%]  flex flex-row justify-around items-center text-xl'>
+                    <div className=''>
                         <Link to='/'>
-                            <p className='font-bold text-2xl'> Uploaded </p>
+                            <p className={`${props.id == 'p1' ? style : ""}`}> Uploaded </p>
                         </Link>
                     </div>
                     <div>
                         <Link to='/approved'>
-                            <p> Approved </p>
+                            <p className={`${props.id == 'p2' ? style : ""}`} id='p2' > Approved </p>
                         </Link>
 
                     </div>
                     <div>
                         <Link to='/confirmed'>
-                            <p> Confirmed </p>
+                            <p className={`${props.id == 'p3' ? style : ""}`} id='p3'> Confirmed </p>
                         </Link>
 
                     </div>
                     <div>
                         <Link to='/pickedup'>
-                            <p> Picked up </p>
+                            <p className={`${props.id == 'p4' ? style : ""}`} id='p4'> Picked up </p>
                         </Link>
                     </div>
                     <div>
                         <Link to='/rejected'>
-                            <p> Rejected </p>
+                            <p className={`${props.id == 'p5' ? style : ""}`} id='p5'> Rejected </p>
                         </Link>
                     </div>
 
