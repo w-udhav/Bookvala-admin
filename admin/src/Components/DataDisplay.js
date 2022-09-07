@@ -1,32 +1,28 @@
 import React, { useState } from 'react'
 import '../App.css';
-import Verification from './Verification';
+import { Link } from 'react-router-dom';
 
 const DataDisplay = (props) => {
-    const { id, name, date, status, price } = props;
-
-    const handleClick = () => {
-        console.log("hit")
-    }
-
+    const status = ["Uploaded", "Approved", "Confirmed", "Picked up", "Rejected"]
+    const { model } = props;
     return (
-        <div onClick={handleClick} className='flex flex-row justify-evenly items-center text-center rounded-full py-5 withShadow'>
-            <div className='flex-auto'>
-                <p> {id} </p>
+        <Link to='/verify' state={{ data: model }}
+        >
+            <div className='flex flex-row justify-evenly items-center text-center rounded-full py-5 withShadow'>
+                <div className='flex-1'>
+                    <p> {model["prod_id"]} </p>
+                </div>
+                <div className='flex-1'>
+                    <p> {model["book_title"]} </p>
+                </div>
+                <div className='flex-1'>
+                    <p>{status[model["status"] - 1]} </p>
+                </div>
+                <div className='flex-1'>
+                    <p> ₹ {model["book_mrp"]} </p>
+                </div>
             </div>
-            <div className='flex-auto'>
-                <p> {name} </p>
-            </div>
-            <div className='flex-auto'>
-                <p> {date} </p>
-            </div>
-            <div className='flex-auto'>
-                <p>{status}</p>
-            </div>
-            <div className='flex-auto'>
-                <p> ₹{price} </p>
-            </div>
-        </div>
+        </Link>
     )
 }
 

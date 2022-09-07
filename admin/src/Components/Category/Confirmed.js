@@ -3,7 +3,7 @@ import React from 'react'
 import DataCat from '../DataCat';
 import DataDisplay from '../DataDisplay';
 
-class Approved extends React.Component {
+class Confirmed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ class Approved extends React.Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: "https://backend.bookvala.com/api/admingetuploadedproduct/2",
+            url: "https://backend.bookvala.com/api/admingetuploadedproduct/3",
         }).then((res) => {
             this.setState({ data: res.data })
             // console.log(res.data)
@@ -45,4 +45,4 @@ class Approved extends React.Component {
 }
 
 
-export default Approved
+export default Confirmed
