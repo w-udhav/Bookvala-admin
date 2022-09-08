@@ -11,11 +11,13 @@ const Verification = (props) => {
     const model = location.state.data;
     const [approval, setApproval] = useState(false);
     const [err, setErr] = useState('');
+    const [coins, setCoins] = useState();
 
     const updateStatus = async (status) => {
         await axios.put(`https://backend.bookvala.com/api/updatesellingconfirmation/${model.prod_id}/${status}`)
             .then((res) => {
                 setApproval(true);
+
             })
             .catch(err => {
                 setErr(err);
@@ -26,7 +28,6 @@ const Verification = (props) => {
         <div className='p-10'>
             <Link to='/'>
                 <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} className='absolute top-6 left-16 rounded-full shadow-sm shadow-cus-yellow py-5 px-4'>
-                    {/* <p className='text-2xl'> &lt; </p> */}
                     <motion.button> Back </motion.button>
                 </motion.div>
             </Link>
@@ -97,7 +98,9 @@ const Verification = (props) => {
                             <div className=''>
                                 <input
                                     type='number'
-                                    className='rounded-lg border border-zinc-500 px-3 box-border w-16'
+                                    className='rounded-lg border border-zinc-500 px-3 box-border w-20 outline-none text-md text-center'
+                                    value={coins}
+                                    onChange={(e) => setCoins(e.target.value)}
                                 />
                             </div>
                         </div>
