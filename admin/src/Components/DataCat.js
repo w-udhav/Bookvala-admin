@@ -35,6 +35,13 @@ const DataCat = (props) => {
                             <p className={`${props.id == 'p5' ? style : ""}`} id='p5'> Rejected </p>
                         </Link>
                     </div>
+                    <div>
+                        <Link to='/listed'>
+                            <p className={`${props.id == 'p6' ? style : ""}`} id='p6'> Listed </p>
+                        </Link>
+                    </div>
+                </div>
+                <div>
 
                 </div>
             </nav>

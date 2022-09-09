@@ -3,7 +3,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 const DataDisplay = (props) => {
-    const status = ["Uploaded", "Approved", "Confirmed", "Picked up", "Rejected"]
+    const status = ["Uploaded", "Approved", "Confirmed", "Picked up", "Rejected", "Listed"]
     const { model } = props;
     return (
         <Link to='/verify' state={{ data: model }}

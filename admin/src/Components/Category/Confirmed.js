@@ -4,6 +4,7 @@ import DataCat from '../DataCat';
 import DataDisplayRead from '../DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
+import { serverURL } from '../../App';
 
 class Confirmed extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Confirmed extends React.Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: "https://backend.bookvala.com/api/admingetuploadedproduct/3",
+            url: `${serverURL}/api/admingetuploadedproduct/3`,
         }).then((res) => {
             this.setState({ data: res.data })
             // console.log(res.data)

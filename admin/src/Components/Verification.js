@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Page from './Page';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import animation from './animation.json';
 import { motion } from 'framer-motion'
+import { serverURL } from '../App'
 
 const Verification = (props) => {
     const location = useLocation();
@@ -13,8 +14,12 @@ const Verification = (props) => {
     const [err, setErr] = useState('');
     const [coins, setCoins] = useState();
 
+
     const updateStatus = async (status) => {
-        await axios.put(`https://backend.bookvala.com/api/updatesellingconfirmation/${model.prod_id}/${status}`)
+        if (status == 5) {
+            setCoins(0);
+        }
+        await axios.post(`${serverURL}/api/adminupdatestatus/${model.prod_id}`, { status: status, coins: coins })
             .then((res) => {
                 setApproval(true);
 
@@ -24,10 +29,11 @@ const Verification = (props) => {
                 setApproval(false);
             })
     }
+    const condition = ["Bad", "Average", "Good"];
     return (
         <div className='p-10'>
             <Link to='/'>
-                <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} className='absolute top-6 left-16 rounded-full shadow-sm shadow-cus-yellow py-5 px-4'>
+                <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} className='fixed top-6 left-16 rounded-full shadow-sm shadow-cus-yellow py-5 px-4'>
                     <motion.button> Back </motion.button>
                 </motion.div>
             </Link>
@@ -67,7 +73,7 @@ const Verification = (props) => {
                             </div>
                             <div>
                                 <p>
-                                    {model.book_condition}
+                                    {condition[model.book_condition - 1]}
                                 </p>
                             </div>
                         </div>

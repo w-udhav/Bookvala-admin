@@ -5,6 +5,7 @@ import DataCat from '../DataCat';
 import DataDisplay from '../DataDisplay'
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
+import { serverURL } from '../../App';
 
 
 
@@ -19,7 +20,7 @@ class Uploaded extends React.Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: "https://backend.bookvala.com/api/admingetuploadedproduct/1",
+            url: `${serverURL}/api/admingetuploadedproduct/1`,
         }).then((res) => {
             this.setState({ data: res.data })
             // console.log(res.data)

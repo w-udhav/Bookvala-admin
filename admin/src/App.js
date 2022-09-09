@@ -12,6 +12,12 @@ import PickedUp from './Components/Category/PickedUp';
 import Uploaded from './Components/Category/Uploaded'
 import Verification from './Components/Verification';
 import { useState } from 'react';
+import PickedUpDetails from './Components/PickedUpDetails';
+import Listed from './Components/Category/Listed';
+
+const serverURL = "http://10.0.22.67:8000"
+
+
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
   return (
@@ -32,7 +38,8 @@ function App() {
                 <Route path='/pickedup' element={<PickedUp />} />
                 <Route path='/rejected' element={<Rejected />} />
                 <Route path='/verify' element={<Verification />} />
-
+                <Route path='/pickedupdetails' element={<PickedUpDetails />} />
+                <Route path='/listed' element={<Listed />} />
               </Routes>
             </div>
         }
@@ -43,3 +50,4 @@ function App() {
 }
 
 export default App;
+export { serverURL };

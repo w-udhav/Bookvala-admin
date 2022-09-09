@@ -4,6 +4,8 @@ import DataCat from '../DataCat';
 import DataDisplayRead from '../DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
+import DataDisplayPicked from '../DataDisplayPicked';
+import { serverURL } from '../../App';
 
 class PickedUp extends React.Component {
     constructor(props) {
@@ -16,7 +18,7 @@ class PickedUp extends React.Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: "https://backend.bookvala.com/api/admingetuploadedproduct/4",
+            url: `${serverURL}/api/admingetuploadedproduct/4`,
         }).then((res) => {
             this.setState({ data: res.data })
             // console.log(res.data)
@@ -39,7 +41,7 @@ class PickedUp extends React.Component {
                     :
                     data.map((e) => {
                         return (
-                            <DataDisplayRead key={e["prod_id"]} model={e} />
+                            <DataDisplayPicked key={e["prod_id"]} model={e} />
 
                         )
                     })
