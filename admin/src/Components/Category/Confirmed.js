@@ -5,50 +5,55 @@ import DataDisplayRead from '../DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
 import { serverURL } from '../../App';
+import { useGlobalState } from '../../GlobalState';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-class Confirmed extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: []
-        }
-    }
+function Confirmed() {
+    const [data, setData] = useState([])
+    var category = useGlobalState("category");
 
-    componentDidMount() {
+    const getData = () => {
         axios({
             method: 'get',
             url: `${serverURL}/api/admingetuploadedproduct/3`,
         }).then((res) => {
-            this.setState({ data: res.data })
-            // console.log(res.data)
+            setData(res.data);
         })
     }
 
-    render() {
-        const { data } = this.state;
-        return (
-            <div>
-                {/* <DataDisplay id='' name='' date='' status='' price='' setTrigger='' /> */}
-                {/* <Verification trigger={trigger} setTrigger={setTrigger} /> */}
-                <DataCat id='p3' />
 
-                {(data.length == 0) ?
-                    // <p className='text-4xl text-center my-40 text-red-600'> Data Not Available !</p> 
-                    <div className='flex justify-center p-5'>
-                        <Lottie animationData={loading} loop={true} />
-                    </div>
-                    :
+    useEffect(() => {
+        getData();
+    }, [])
+
+    return (
+        <div>
+
+            <DataCat id='p3' />
+
+            {(data.length == 0) ?
+                // <p className='text-4xl text-center my-40 text-red-600'> Data Not Available !</p> 
+                <div className='flex justify-center p-5'>
+                    <Lottie animationData={loading} loop={true} />
+                </div>
+                :
+                category[0] == -1 ?
 
                     data.map((e) => {
                         return (
                             <DataDisplayRead key={e["prod_id"]} model={e} />
+                        )
+                    }) :
 
+                    data.filter(e => e.category == category[0]).map((e) => {
+                        return (
+                            <DataDisplayRead key={e["prod_id"]} model={e} />
                         )
                     })
-                }
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }
 
 
