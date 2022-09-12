@@ -1,14 +1,13 @@
 import axios from 'axios';
 import React from 'react'
 import DataCat from '../DataCat';
-import DataDisplayRead from '../DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
-import DataDisplayPicked from '../DataDisplayPicked';
 import { serverURL } from '../../App';
 import { useState } from 'react';
 import { useGlobalState } from '../../GlobalState';
 import { useEffect } from 'react';
+import DataDisplay from '../Display Data/DataDisplay';
 
 
 function PickedUp() {
@@ -43,13 +42,13 @@ function PickedUp() {
 
                     data.map((e) => {
                         return (
-                            <DataDisplayPicked key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} to="pickedupdetails" read={false} />
                         )
                     }) :
 
                     data.filter(e => e.category == category[0]).map((e) => {
                         return (
-                            <DataDisplayPicked key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} to="pickedupdetails" read={false} />
                         )
                     })
             }

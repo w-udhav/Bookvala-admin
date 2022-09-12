@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react'
 import DataCat from '../DataCat';
-import DataDisplayRead from '../DataDisplayRead';
+import DataDisplayRead from '../Display Data/DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
 import { serverURL } from '../../App';
 import { useGlobalState } from '../../GlobalState';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import DataDisplay from '../Display Data/DataDisplay';
 
 function Confirmed() {
     const [data, setData] = useState([])
@@ -42,13 +43,13 @@ function Confirmed() {
 
                     data.map((e) => {
                         return (
-                            <DataDisplayRead key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
                         )
                     }) :
 
                     data.filter(e => e.category == category[0]).map((e) => {
                         return (
-                            <DataDisplayRead key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
                         )
                     })
             }

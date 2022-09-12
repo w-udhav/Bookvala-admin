@@ -31,6 +31,18 @@ const PickedUpDetails = (props) => {
                 setApproval(false);
             })
     }
+
+    const pushBackStatus = async (status) => {
+        await axios.post(`${serverURL}/api/updatesellingconfirmation/${model.prod_id}/${status}`)
+            .then((res) => {
+                setApproval(true);
+            })
+            .catch((err) => {
+                setErr(err);
+                setApproval(false);
+            })
+    }
+
     const condition = ["Bad", "Average", "Good"];
     return (
         <div className='p-10'>
@@ -131,8 +143,18 @@ const PickedUpDetails = (props) => {
                             <div className='flex lg:flex-row md:flex-col justify-between items-center space-x-6 my-8'>
                                 <motion.div>
                                     <motion.button
+                                        className='border border-cus-yellow rounded-full py-1 px-16 text-cus-yellow text-md font-semibold'
+                                        onClick={() => pushBackStatus(3)}
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                    >
+                                        Back to Confirmed
+                                    </motion.button>
+                                </motion.div>
+                                <motion.div>
+                                    <motion.button
                                         className='border border-cus-yellow bg-cus-yellow text-white rounded-full py-1 px-16 text-md font-semibold'
-                                        onClick={() => updateStatus(2)}
+                                        onClick={() => updateStatus()}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                     >

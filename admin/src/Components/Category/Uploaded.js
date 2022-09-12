@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import DataCat from '../DataCat';
-import DataDisplay from '../DataDisplay'
+import DataDisplay from '../Display Data/DataDisplay'
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
 import { serverURL } from '../../App';
@@ -40,13 +40,13 @@ function Uploaded() {
 
                     data.map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} to="verify" />
                         )
                     }) :
 
                     data.filter(e => e.category == category[0]).map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} to="verify" />
                         )
                     })
             }

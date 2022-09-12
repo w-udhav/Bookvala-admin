@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react'
 import DataCat from '../DataCat';
-import DataDisplay from '../DataDisplay';
-import DataDisplayRead from '../DataDisplayRead';
+import DataDisplay from '../Display Data/DataDisplay';
+import DataDisplayRead from '../Display Data/DataDisplayRead';
 import Lottie from 'lottie-react'
 import loading from '../loading.json'
 import { serverURL } from '../../App';
@@ -41,13 +41,13 @@ function Approved() {
 
                     data.map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
                         )
                     }) :
 
                     data.filter(e => e.category == category[0]).map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} />
+                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
                         )
                     })
             }
