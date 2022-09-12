@@ -1,4 +1,3 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ListSelector from './listSelector';
@@ -11,34 +10,24 @@ const DataCat = (props) => {
                 <div className='lg:w-[70%]  flex flex-row justify-around items-center text-xl'>
                     <div className=''>
                         <Link to='/'>
-                            <p className={`${props.id === 'p1' ? style : ""}`}> Uploaded </p>
+                            <p className={`${props.id === 'p1' ? style : ""}`}> Received </p>
                         </Link>
                     </div>
                     <div>
-                        <Link to='/approved'>
-                            <p className={`${props.id === 'p2' ? style : ""}`} id='p2' > Approved </p>
-                        </Link>
-
-                    </div>
-                    <div>
-                        <Link to='/confirmed'>
-                            <p className={`${props.id === 'p3' ? style : ""}`} id='p3'> Confirmed </p>
+                        <Link to='/dispatched'>
+                            <p className={`${props.id === 'p2' ? style : ""}`} id='p2' > Dispatched </p>
                         </Link>
 
                     </div>
                     <div>
-                        <Link to='/pickedup'>
-                            <p className={`${props.id === 'p4' ? style : ""}`} id='p4'> Picked up </p>
+                        <Link to='/delivery'>
+                            <p className={`${props.id === 'p3' ? style : ""}`} id='p3'> Delivery </p>
                         </Link>
+
                     </div>
                     <div>
-                        <Link to='/rejected'>
-                            <p className={`${props.id === 'p5' ? style : ""}`} id='p5'> Rejected </p>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link to='/listed'>
-                            <p className={`${props.id === 'p6' ? style : ""}`} id='p6'> Listed </p>
+                        <Link to='/disapproved'>
+                            <p className={`${props.id === 'p4' ? style : ""}`} id='p4'> Disapproved </p>
                         </Link>
                     </div>
                 </div>
