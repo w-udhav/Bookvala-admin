@@ -12,14 +12,10 @@ const ProductDetail = (props) => {
     const model = location.state.data;
     const [approval, setApproval] = useState(false);
     const [err, setErr] = useState('');
-    const [coins, setCoins] = useState();
     // const [option, setOption] = useState(0);
 
     const updateStatus = async (status) => {
-        if (status == 5) {
-            setCoins(0);
-        }
-        await axios.post(`${serverURL}/api/adminupdatestatus/${model.prod_id}`, { status: status, coins: coins })
+        await axios.post(`${serverURL}/api/adminupdatestatus/${model.prod_id}`, { status: status })
             .then((res) => {
                 setApproval(true);
 
@@ -32,7 +28,7 @@ const ProductDetail = (props) => {
     const condition = ["Bad", "Average", "Good"];
     return (
         <div className='p-10'>
-            <Link to='/'>
+            <Link to='/confirmed'>
                 <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} className='fixed top-6 left-16 rounded-full shadow-sm shadow-cus-yellow py-5 px-4'>
                     <motion.button> Back </motion.button>
                 </motion.div>
@@ -97,58 +93,20 @@ const ProductDetail = (props) => {
                                 </p>
                             </div>
                         </div>
-                        <div className='flex flex-row justify-center'>
-                            <div className='flex-1'>
-                                <p className='font-bold text-zinc-700'> Coins: </p>
-                            </div>
-                            <div className=''>
-                                <input
-                                    type='number'
-                                    className='rounded-lg border border-zinc-500 px-3 box-border w-20 outline-none text-md text-center'
-                                    value={coins}
-                                    onChange={(e) => setCoins(e.target.value)}
-                                />
-                            </div>
-                            {/* <FormControl fullWidth>
-                                <InputLabel id='chooseOption'> Choose an option </InputLabel>
-                                <Select
-                                    label='choose an option'
-                                    value={option}
-                                    onChange={(e) => setOption(e.target.value)}
-                                >
-                                    <MenuItem value={1} > Uploaded </MenuItem>
-                                    <MenuItem value={2} > Approved </MenuItem>
-                                    <MenuItem value={3} > Confirmed </MenuItem>
-                                    <MenuItem value={4} > Picked up </MenuItem>
-                                    <MenuItem value={5} > Rejected </MenuItem>
-                                    <MenuItem value={6} > Listed </MenuItem>
-                                </Select>
-                            </FormControl> */}
-                        </div>
 
                     </div>
 
                     {
                         !approval ?
                             <div className='flex lg:flex-row md:flex-col justify-between items-center space-x-6 my-8'>
-                                <motion.div className='flex'>
-                                    <motion.button
-                                        className='border border-cus-yellow rounded-full py-1 px-16 text-cus-yellow text-md font-semibold'
-                                        onClick={() => updateStatus(5)}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
-                                        Reject
-                                    </motion.button>
-                                </motion.div>
                                 <motion.div>
                                     <motion.button
                                         className='border border-cus-yellow bg-cus-yellow text-white rounded-full py-1 px-16 text-md font-semibold'
-                                        onClick={() => updateStatus(2)}
+                                        onClick={() => updateStatus(4)}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                     >
-                                        Approve
+                                        Move to Picked up
                                     </motion.button>
                                 </motion.div>
                             </div> :

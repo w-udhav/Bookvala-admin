@@ -43,13 +43,13 @@ function Listed() {
 
                     data.map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
+                            <DataDisplay key={e["prod_id"]} model={e} to='finallisting' read={false} />
                         )
                     }) :
 
                     data.filter(e => e.category == category[0]).map((e) => {
                         return (
-                            <DataDisplay key={e["prod_id"]} model={e} read={true} />
+                            <DataDisplay key={e["prod_id"]} model={e} to='finallisting' read={false} />
                         )
                     })
             }

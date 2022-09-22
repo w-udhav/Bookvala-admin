@@ -11,9 +11,11 @@ import Verification from './Components/Verification';
 import { useState } from 'react';
 import PickedUpDetails from './Components/PickedUpDetails';
 import Listed from './Components/Category/Listed';
+import ProductDetail from './Components/ProductDetail';
+import FinalListing from './Components/FinalListing';
 
 const serverURL = "https://backend.bookvala.com"
-
+// const serverURL = "http://10.0.22.72:8000"
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -34,9 +36,13 @@ function App() {
                 <Route path='/confirmed' element={<Confirmed />} />
                 <Route path='/pickedup' element={<PickedUp />} />
                 <Route path='/rejected' element={<Rejected />} />
+                <Route path='/listed' element={<Listed />} />
+
+                {/* Verified routes */}
                 <Route path='/verify' element={<Verification />} />
                 <Route path='/pickedupdetails' element={<PickedUpDetails />} />
-                <Route path='/listed' element={<Listed />} />
+                <Route path='/confirmedtopicked' element={<ProductDetail />} />
+                <Route path='/finallisting' element={<FinalListing />} />
               </Routes>
             </div>
         }
