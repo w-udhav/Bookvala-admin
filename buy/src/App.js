@@ -17,6 +17,7 @@ function App() {
   const [loginStatus, setLoginStatus] = useState(false);
   return (
     <BrowserRouter>
+
       <div className="lg:px-[9%] bg-[#FCFCFC]">
         {/* <Login /> */}
         <Navbar />
