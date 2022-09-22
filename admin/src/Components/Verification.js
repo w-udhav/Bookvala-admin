@@ -6,7 +6,6 @@ import Lottie from 'lottie-react';
 import animation from './animation.json';
 import { motion } from 'framer-motion'
 import { serverURL } from '../App'
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Verification = (props) => {
     const location = useLocation();

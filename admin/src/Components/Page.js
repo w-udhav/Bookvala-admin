@@ -17,7 +17,6 @@ class Page extends React.Component {
         axios.get(`https://backend.bookvala.com/api/getimages/${this.props.id}`)
             .then((res) => {
                 this.setState({ images: Object.values(res.data) })
-                // console.log(this.state.images)
             })
     }
 
@@ -27,13 +26,6 @@ class Page extends React.Component {
 
 
     handleChange = (status) => {
-        console.log(this.state.count)
-        // if (status == 0) {
-        //     let updateVal1 = (this.state.images.length) - ((this.state.count + 1) % this.state.images.length)
-        //     console.log(updateVal1 + " count : " + this.state.count)
-        //     //     this.setState({ count: updateVal1 })
-        // }
-
         if (status == 1) {
             let updateVal = (this.state.count + 1) % this.state.images.length
             return this.setState({ count: updateVal })
@@ -48,7 +40,7 @@ class Page extends React.Component {
                 <div className='flex flex-col items-center space-y-11'>
                     <div className=''>
                         <img
-                            src={images[count]}
+                            src={`https://bookvalaimagebucket.s3.ap-south-1.amazonaws.com/${this.props.id}/${images[count]}.jpg`}
                             className="w-full rounded-md shadow-xl"
                         />
                     </div>
