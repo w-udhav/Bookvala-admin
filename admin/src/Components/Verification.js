@@ -6,6 +6,7 @@ import Lottie from 'lottie-react';
 import animation from './animation.json';
 import { motion } from 'framer-motion'
 import { serverURL } from '../App'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Verification = (props) => {
     const location = useLocation();
@@ -13,7 +14,7 @@ const Verification = (props) => {
     const [approval, setApproval] = useState(false);
     const [err, setErr] = useState('');
     const [coins, setCoins] = useState();
-
+    // const [option, setOption] = useState(0);
 
     const updateStatus = async (status) => {
         if (status == 5) {
@@ -46,7 +47,7 @@ const Verification = (props) => {
                     <div className='my-5'>
                         <p className='text-4xl font-bold'> Book Details </p>
                     </div>
-                    <div className='flex flex-col my-5 space-y-2 text-lg'>
+                    <div className=' flex flex-col my-5 space-y-3 text-xl'>
                         <div className='flex flex-row justify-between space-x-8'>
                             <div className=''>
                                 <p className='font-bold text-zinc-700'> Name: </p>
@@ -97,7 +98,7 @@ const Verification = (props) => {
                                 </p>
                             </div>
                         </div>
-                        <div className='flex flex-row justify-between space-x-8'>
+                        <div className='flex flex-row justify-center'>
                             <div className='flex-1'>
                                 <p className='font-bold text-zinc-700'> Coins: </p>
                             </div>
@@ -109,6 +110,21 @@ const Verification = (props) => {
                                     onChange={(e) => setCoins(e.target.value)}
                                 />
                             </div>
+                            {/* <FormControl fullWidth>
+                                <InputLabel id='chooseOption'> Choose an option </InputLabel>
+                                <Select
+                                    label='choose an option'
+                                    value={option}
+                                    onChange={(e) => setOption(e.target.value)}
+                                >
+                                    <MenuItem value={1} > Uploaded </MenuItem>
+                                    <MenuItem value={2} > Approved </MenuItem>
+                                    <MenuItem value={3} > Confirmed </MenuItem>
+                                    <MenuItem value={4} > Picked up </MenuItem>
+                                    <MenuItem value={5} > Rejected </MenuItem>
+                                    <MenuItem value={6} > Listed </MenuItem>
+                                </Select>
+                            </FormControl> */}
                         </div>
 
                     </div>

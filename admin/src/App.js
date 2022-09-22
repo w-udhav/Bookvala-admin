@@ -2,11 +2,8 @@ import './App.css';
 import Login from './Components/Login';
 import Navbar from './Components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import All from './Components/Category/Uploaded';
 import Rejected from './Components/Category/Rejected';
 import Approved from './Components/Category/Approved';
-import DataDisplay from './Components/DataDisplay';
-import DataCat from './Components/DataCat';
 import Confirmed from './Components/Category/Confirmed';
 import PickedUp from './Components/Category/PickedUp';
 import Uploaded from './Components/Category/Uploaded'
@@ -15,7 +12,7 @@ import { useState } from 'react';
 import PickedUpDetails from './Components/PickedUpDetails';
 import Listed from './Components/Category/Listed';
 
-const serverURL = "http://10.0.22.67:8000"
+const serverURL = "https://backend.bookvala.com"
 
 
 function App() {
